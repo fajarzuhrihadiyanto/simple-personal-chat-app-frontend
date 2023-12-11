@@ -79,12 +79,8 @@ const decrypt_with_signature = (message, friend_public_key, friend_n, private_ke
     const plain_message_encoded = secret_message.map(crypt => powMod(crypt, private_key, n))
     const signature_encoded = signature.map(crypt => powMod(crypt, friend_public_key, friend_n))
 
-    console.log('encoded :', plain_message_encoded, signature_encoded)
-
     const plain_message = plain_message_encoded.map(char => String.fromCharCode(char)).join('')
     const plain_signature = signature_encoded.map(char => String.fromCharCode(char)).join('')
-
-    console.log('plain :', plain_message, plain_signature)
 
     if (plain_message === plain_signature) {
         return plain_message

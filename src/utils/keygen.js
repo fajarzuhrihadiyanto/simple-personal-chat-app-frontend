@@ -68,23 +68,4 @@ const generateKey = () => {
     }
 }
 
-// const key = generateKey()
-// const pub = key.public_key
-// const priv = key.private_key
-// const n = key.n
-
-// const message = 'lorem ipsum'
-// let message_encoded = message.split('').map(char => char.charCodeAt(0))
-
-// console.log('MESSAGE : ', message)
-// console.log('MESSAGE ENCODED : ', message_encoded)
-
-// const encrypted_message = message_encoded.map(char => powMod(char, pub, n))
-// console.log('ENCRYPTED MESSAGE : ', encrypted_message)
-
-// message_encoded = encrypted_message.map(crypt => powMod(crypt, priv, n))
-// console.log('PLAIN MESSAGE AFTER DECRYPT : ', message_encoded)
-// const plain_text = message_encoded.map(char => String.fromCharCode(char)).join('')
-// console.log('PLAIN TEXT : ', plain_text)
-
 export default generateKey

@@ -20,21 +20,22 @@ const Chat = ({users, currentChat, chats}) => {
     const des = user && new DES(user.session_key)
 
     const onSend = () => {
-        console.log(currentChat)
-        console.log(user.session_key)
         const encrypted_message = des.encrypt(message)
 
         socket.emit('new chat', currentChat, encrypted_message)
+        setMessage('')
     }
     return (
         <div style={{padding: '20px', flex: 1}}>
             <h1>{username}</h1>
             <div style={{display: 'flex', flexDirection: 'column', maxHeight: '600px', overflow: 'auto'}}>
-                {chats.map((val, index) => (
+                {chats.map((val, index) => {
+                    return (
                     <div key={index} style={
                         {
-                            alignSelf: align[val.sender === currentChat],
-                            background: boxColor[val.sender === currentChat],
+                            marginTop: '8px',
+                            alignSelf: align[(val.sender === currentChat) + 0],
+                            background: boxColor[(val.sender === currentChat) + 0],
                             padding: '8px',
                             borderRadius: '8px',
                             boxSizing: 'border-box',
@@ -43,7 +44,7 @@ const Chat = ({users, currentChat, chats}) => {
                     >
                         {val.content}
                     </div> 
-                ))}
+                )})}
             </div>
             <div style={{marginTop: '16px'}}>
                 {currentChat !== null &&

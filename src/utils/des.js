@@ -237,7 +237,7 @@ class DES {
     decrypt(hex) {
         const input = hex_to_binary(hex)
 
-        const crypted = this.crypt_base(input, this.subkeys.reverse())
+        const crypted = this.crypt_base(input, [...this.subkeys].reverse())
 
         const result = binary_to_string(crypted)
 
